@@ -3,6 +3,7 @@ import hashlib
 import random
 import pandas as pd
 from typing import List, Tuple, Dict, Any
+import string
 
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
@@ -16,8 +17,8 @@ from PySide6.QtGui import QFont, QColor
 # PART A: Core ML Transformation Logic 
 # ====================================================================
 
-# Expanded airport data including country and domestic/international classification
-AIRPORT_DATA = {
+# This section defines a core set of real airport data (17 entries)
+KNOWN_AIRPORT_DATA = {
     # Domestic US (for demonstration)
     "JFK": {"type": "International", "city": "New York", "country": "USA"},
     "LAX": {"type": "International", "city": "Los Angeles", "country": "USA"},
@@ -43,7 +44,36 @@ AIRPORT_DATA = {
     "SYD": {"type": "International", "city": "Sydney", "country": "Australia"},
 }
 
-IATA_CODES = list(AIRPORT_DATA.keys())
+# --- Function to Simulate the Required Number of Airports (347) ---
+def generate_simulated_iata_codes(num_desired: int, existing_codes: List[str]) -> List[str]:
+    """Generates unique 3-letter strings to meet a total IATA count."""
+    count_to_generate = num_desired - len(existing_codes)
+    if count_to_generate <= 0:
+        return existing_codes
+        
+    simulated_codes = set(existing_codes)
+    # Generates 3-letter codes until the target count is reached
+    while len(simulated_codes) < num_desired:
+        code = ''.join(random.choices(string.ascii_uppercase, k=3))
+        simulated_codes.add(code)
+    
+    return list(simulated_codes)
+
+# Required number of airports: 347
+TARGET_AIRPORT_COUNT = 347
+
+# Generate the full set of IATA codes (17 real + 330 simulated = 347)
+IATA_CODES = generate_simulated_iata_codes(TARGET_AIRPORT_COUNT, list(KNOWN_AIRPORT_DATA.keys()))
+
+# Create the full data dictionary for the simulation
+AIRPORT_DATA = KNOWN_AIRPORT_DATA.copy()
+for code in IATA_CODES:
+    if code not in AIRPORT_DATA:
+        # Assign random properties to simulated airports 
+        airport_type = random.choice(["Domestic", "International"])
+        AIRPORT_DATA[code] = {"type": airport_type, "city": f"City_{code}", "country": f"Country_{code}"}
+
+# Hashed Feature Configuration
 HASH_BUCKETS = 100
 
 # Buckets for the Reframing (Output Label)
@@ -51,9 +81,9 @@ HASH_BUCKETS = 100
 # 1: Medium Delay (10 min < Delay <= 45 min)
 # 2: Significant Delay (Delay > 45 min)
 BUCKET_RANGES = [
-    (10, "On-Time/Early", QColor("#34D399")),  # Tailwind Green-400
-    (45, "Medium Delay", QColor("#FBBF24")),   # Tailwind Yellow-400
-    (float('inf'), "Significant Delay", QColor("#F87171")) # Tailwind Red-400
+    (10, "On-Time/Early", QColor("#34D399")),  # Green
+    (45, "Medium Delay", QColor("#FBBF24")),   # Yellow
+    (float('inf'), "Significant Delay", QColor("#F87171")) # Red
 ]
 
 def hashed_feature_mapping(iata_code: str, num_buckets: int) -> int:
@@ -76,7 +106,6 @@ def bucketize_delay(arrival_delay_minutes: float) -> Tuple[int, str, QColor]:
 
 def generate_delay() -> float:
     """Generates a random, realistic, and dynamic delay (skewed towards 0/+ve)."""
-    # A mix of uniform and exponential to simulate more smaller delays
     return round(random.uniform(-15, 5) + random.expovariate(0.05), 2)
 
 
@@ -89,8 +118,8 @@ class FlightDelayApp(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Dynamic Feature Engineering Viewer (PySide6)")
-        self.setGeometry(100, 100, 1300, 650) # Increased width for new column
+        self.setWindowTitle("Dynamic ML Feature Engineering Viewer (PySide6)")
+        self.setGeometry(100, 100, 1300, 650)
         
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_table_data)
@@ -105,48 +134,25 @@ class FlightDelayApp(QMainWindow):
     def apply_styles(self):
         """Applies a professional dark-themed QSS style sheet."""
         self.setStyleSheet("""
-            QMainWindow {
-                background-color: #2D3748; /* Dark Gray */
+            QMainWindow { background-color: #2D3748; } 
+            QWidget#CentralWidget { padding: 15px; }
+            QGroupBox { 
+                background-color: #4A5568; border: 2px solid #63B3ED; 
+                border-radius: 8px; margin-top: 10px; font-weight: bold;
+                color: #E2E8F0; padding-top: 15px; 
             }
-            QWidget#CentralWidget {
-                padding: 15px;
-            }
-            QGroupBox {
-                background-color: #4A5568; 
-                border: 2px solid #63B3ED; /* Light blue border */
-                border-radius: 8px;
-                margin-top: 10px;
-                font-weight: bold;
-                color: #E2E8F0; 
-                padding-top: 15px;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                subcontrol-position: top left;
-                padding: 0 10px;
-            }
-            QTableWidget {
-                background-color: #2D3748;
-                border: 1px solid #718096;
-                border-radius: 6px;
-                gridline-color: #4A5568;
-                color: #E2E8F0;
-                font-size: 14px;
+            QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; padding: 0 10px; }
+            QTableWidget { 
+                background-color: #2D3748; border: 1px solid #718096;
+                border-radius: 6px; gridline-color: #4A5568;
+                color: #E2E8F0; font-size: 14px; 
             }
             QHeaderView::section {
-                background-color: #4A5568;
-                color: #9DECF9; /* Cyan for headers */
-                padding: 8px;
-                border: 1px solid #718096;
-                font-weight: bold;
-                font-size: 14px;
+                background-color: #4A5568; color: #9DECF9;
+                padding: 8px; border: 1px solid #718096;
+                font-weight: bold; font-size: 14px; 
             }
-            QStatusBar {
-                background-color: #1A202C; /* Very dark background */
-                color: #A0AEC0;
-                font-size: 12px;
-                border-top: 1px solid #718096;
-            }
+            QStatusBar { background-color: #1A202C; color: #A0AEC0; font-size: 12px; border-top: 1px solid #718096; }
         """)
 
     def setup_ui(self):
@@ -191,15 +197,16 @@ class FlightDelayApp(QMainWindow):
         
         self.table = QTableWidget()
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.table.setColumnCount(5) # Increased column count to 5
+        self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels([
             "IATA Code (Raw Feature)", 
-            "Type (Domestic/Intl.) [Binary]", # New Column
+            "Type (Domestic/Intl.) [Binary]",
             "Actual Delay (Continuous)", 
             f"Hashed Index (0 to {HASH_BUCKETS-1})", 
             "Delay Class (Target Label)"
         ])
-        self.table.setRowCount(len(IATA_CODES))
+        # Set the row count based on the 347 airports
+        self.table.setRowCount(len(IATA_CODES)) 
         header = self.table.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         results_layout.addWidget(self.table)
@@ -215,35 +222,34 @@ class FlightDelayApp(QMainWindow):
     def update_table_data(self):
         """
         Executes the data transformation using a Pandas DataFrame and 
-        updates the table.
+        updates the table for all 347 airports.
         """
         
-        # 1. Generate Raw Data into a list of dictionaries
+        # 1. Generate Raw Data 
         raw_data = []
-        for code, details in AIRPORT_DATA.items():
+        for code in IATA_CODES:
+            details = AIRPORT_DATA[code]
             raw_data.append({
                 'IATA_Code': code,
                 'Actual_Delay': generate_delay(),
-                'Airport_Type': details['type'] # New raw feature
+                'Airport_Type': details['type']
             })
         
-        # Convert to Pandas DataFrame
         df = pd.DataFrame(raw_data)
         
-        # 2. Apply Vectorized Transformations using Pandas
+        # 2. Apply Vectorized Transformations
         
-        # A. Feature Hashing (Input Transformation: High Cardinality IATA)
+        # A. Feature Hashing
         df['Hashed_Index'] = df['IATA_Code'].apply(
             lambda x: hashed_feature_mapping(x, HASH_BUCKETS)
         )
         
-        # B. Binary Encoding (Input Transformation: Low Cardinality Type)
-        # 0 for Domestic, 1 for International
+        # B. Binary Encoding
         df['Type_Binary'] = df['Airport_Type'].apply(
             lambda x: 1 if x == 'International' else 0
         )
         
-        # C. Reframing/Bucketing (Output Transformation)
+        # C. Reframing/Bucketing
         df[['Class_Index', 'Class_Label', 'Class_Color']] = df['Actual_Delay'].apply(
             lambda x: pd.Series(bucketize_delay(x))
         )
@@ -252,7 +258,6 @@ class FlightDelayApp(QMainWindow):
         collision_count = 0
         hash_map: Dict[int, List[str]] = {}
         
-        # Iterate over the DataFrame to update the QTableWidget
         for row, data in df.iterrows():
             iata_code = data['IATA_Code']
             airport_type = data['Airport_Type']
@@ -263,65 +268,53 @@ class FlightDelayApp(QMainWindow):
             class_label = data['Class_Label']
             class_color = data['Class_Color']
             
-            # Collision Check Logic (requires iteration)
+            # Collision Check Logic
             if hash_index not in hash_map:
                 hash_map[hash_index] = [iata_code]
             elif iata_code not in hash_map[hash_index]:
                 hash_map[hash_index].append(iata_code)
-                collision_count += 1
+                collision_count += 1 
             
-            # --- Populate the QTableWidget row (5 columns) ---
+            # --- Populate the QTableWidget row ---
             
-            # Col 0: IATA Code (Raw Feature)
+            # Col 0: IATA Code
             item_iata = QTableWidgetItem(iata_code)
             self.table.setItem(row, 0, item_iata)
 
-            # Col 1: Airport Type (Raw Categorical + Binary Encoded)
+            # Col 1: Airport Type
             item_type = QTableWidgetItem(f"{airport_type} ({type_binary})")
-            # Highlight International airports
-            if airport_type == 'International':
-                 item_type.setForeground(QColor("#667EEA")) # Indigo
-            else:
-                 item_type.setForeground(QColor("#A0AEC0")) # Default light gray
+            item_type.setForeground(QColor("#667EEA") if airport_type == 'International' else QColor("#A0AEC0"))
             self.table.setItem(row, 1, item_type)
             
-            # Col 2: Actual Delay (Continuous Feature)
+            # Col 2: Actual Delay
             item_delay = QTableWidgetItem(f"{delay:+.2f} min")
-            
-            # Highlight early arrivals in blue
-            if delay <= 0:
-                 item_delay.setForeground(QColor("#63B3ED")) # Blue
-            else:
-                 item_delay.setForeground(QColor("#E2E8F0")) # Default light gray
-            
+            item_delay.setForeground(QColor("#63B3ED") if delay <= 0 else QColor("#E2E8F0"))
             self.table.setItem(row, 2, item_delay)
 
-            # Col 3: Hash Index (Input Feature) - Set bold if collision detected
+            # Col 3: Hash Index (Highlight collisions)
             item_hash = QTableWidgetItem(str(hash_index))
             if len(hash_map[hash_index]) > 1:
-                 item_hash.setFont(QFont("Inter", 10, QFont.Weight.Bold))
-                 item_hash.setForeground(QColor("#FBBF24")) # Yellow for collisions
+                item_hash.setFont(QFont("Inter", 10, QFont.Weight.Bold))
+                item_hash.setForeground(QColor("#FBBF24")) # Yellow for collisions
             else:
-                 item_hash.setFont(QFont("Inter", 10, QFont.Weight.Normal))
-                 item_hash.setForeground(QColor("#E2E8F0"))
+                item_hash.setFont(QFont("Inter", 10, QFont.Weight.Normal))
+                item_hash.setForeground(QColor("#E2E8F0"))
             self.table.setItem(row, 3, item_hash)
             
-            # Col 4: Delay Class (Target Label) - Apply color from the bucket
+            # Col 4: Delay Class (Target Label)
             item_class = QTableWidgetItem(f"Class {class_index}: {class_label}")
-            # Use the QColor object directly from the DataFrame column
             item_class.setForeground(class_color) 
             item_class.setFont(QFont("Inter", 10, QFont.Weight.Bold))
             self.table.setItem(row, 4, item_class)
             
         # Update the status bar with collision information
-        if collision_count > 0:
-            self.statusBar.showMessage(
-                f"Collision Alert: {collision_count} Hash collisions detected among unique IATA codes (N={HASH_BUCKETS}). Data refreshed. Now tracking {len(IATA_CODES)} airports."
-            )
-        else:
-            self.statusBar.showMessage(
-                f"Transformation pipeline refreshed (using Pandas). Hash Buckets (N) = {HASH_BUCKETS}. Tracking {len(IATA_CODES)} airports. No new collisions detected. "
-            )
+        total_unique_collisions = sum(1 for index in hash_map if len(hash_map[index]) > 1)
+        
+        self.statusBar.showMessage(
+            f"Transformation pipeline refreshed (using Pandas). Hash Buckets (N) = {HASH_BUCKETS}. "
+            f"Tracking {len(IATA_CODES)} airports. Total unique collisions: {total_unique_collisions}. "
+            f"Total items involved in collision: {collision_count} (items after the first one hit the bucket). "
+        )
 
 
 if __name__ == "__main__":
