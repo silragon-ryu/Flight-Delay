@@ -1,0 +1,347 @@
+IATA_Code,City,Country,Type
+JFK,New York,USA,International
+LAX,Los Angeles,USA,International
+ATL,Atlanta,USA,Domestic
+ORD,Chicago,USA,Domestic
+DFW,Dallas/Fort Worth,USA,Domestic
+SFO,San Francisco,USA,International
+CLT,Charlotte,USA,Domestic
+DEN,Denver,USA,Domestic
+MIA,Miami,USA,International
+SEA,Seattle,USA,International
+PHX,Phoenix,USA,Domestic
+IAH,Houston,USA,International
+EWR,Newark,USA,International
+BOS,Boston,USA,International
+YYZ,Toronto,Canada,International
+YVR,Vancouver,Canada,International
+MEX,Mexico City,Mexico,International
+LHR,London,UK,International
+CDG,Paris,France,International
+FRA,Frankfurt,Germany,International
+AMS,Amsterdam,Netherlands,International
+MAD,Madrid,Spain,International
+BCN,Barcelona,Spain,International
+FCO,Rome,Italy,International
+MUC,Munich,Germany,International
+ZRH,Zurich,Switzerland,International
+VIE,Vienna,Austria,International
+DUB,Dublin,Ireland,International
+CPH,Copenhagen,Denmark,International
+OSL,Oslo,Norway,International
+HEL,Helsinki,Finland,International
+PRG,Prague,Czechia,International
+BUD,Budapest,Hungary,International
+WAW,Warsaw,Poland,International
+ATH,Athens,Greece,International
+IST,Istanbul,Turkey,International
+DXB,Dubai,UAE,International
+DOH,Doha,Qatar,International
+SIN,Singapore,Singapore,International
+BKK,Bangkok,Thailand,International
+NRT,Tokyo,Japan,International
+HND,Tokyo,Japan,International
+ICN,Seoul,South Korea,International
+PEK,Beijing,China,International
+PVG,Shanghai,China,International
+CAN,Guangzhou,China,International
+DEL,New Delhi,India,International
+BOM,Mumbai,India,International
+KUL,Kuala Lumpur,Malaysia,International
+SYD,Sydney,Australia,International
+MEL,Melbourne,Australia,International
+AKL,Auckland,New Zealand,International
+GRU,Sao Paulo,Brazil,International
+GIG,Rio de Janeiro,Brazil,International
+SCL,Santiago,Chile,International
+BOG,Bogota,Colombia,International
+JNB,Johannesburg,South Africa,International
+CAI,Cairo,Egypt,International
+PHL,Philadelphia,USA,International
+FLL,Fort Lauderdale,USA,Domestic
+MCO,Orlando,USA,Domestic
+SAN,San Diego,USA,Domestic
+MSP,Minneapolis,USA,Domestic
+DTW,Detroit,USA,Domestic
+BWI,Baltimore,USA,Domestic
+SLC,Salt Lake City,USA,Domestic
+IAD,Washington D.C.,USA,International
+DCA,Washington D.C.,USA,Domestic
+TPA,Tampa,USA,Domestic
+PDX,Portland,USA,Domestic
+HNL,Honolulu,USA,International
+OGG,Kahului,USA,Domestic
+SMF,Sacramento,USA,Domestic
+RDU,Raleigh/Durham,USA,Domestic
+AUS,Austin,USA,Domestic
+SAT,San Antonio,USA,Domestic
+IND,Indianapolis,USA,Domestic
+MCI,Kansas City,USA,Domestic
+CVG,Cincinnati,USA,Domestic
+CLE,Cleveland,USA,Domestic
+PIT,Pittsburgh,USA,Domestic
+STL,St. Louis,USA,Domestic
+MKE,Milwaukee,USA,Domestic
+MEM,Memphis,USA,Domestic
+BNA,Nashville,USA,Domestic
+MSY,New Orleans,USA,Domestic
+RIC,Richmond,USA,Domestic
+PBI,West Palm Beach,USA,Domestic
+JAX,Jacksonville,USA,Domestic
+OMA,Omaha,USA,Domestic
+MHT,Manchester,USA,Domestic
+ALB,Albany,USA,Domestic
+SYR,Syracuse,USA,Domestic
+ROC,Rochester,USA,Domestic
+BUF,Buffalo,USA,Domestic
+HOU,Houston,USA,Domestic
+DAL,Dallas,USA,Domestic
+MDW,Chicago,USA,Domestic
+OAK,Oakland,USA,Domestic
+SJC,San Jose,USA,Domestic
+LGB,Long Beach,USA,Domestic
+SNA,Santa Ana,USA,Domestic
+BUR,Burbank,USA,Domestic
+PSP,Palm Springs,USA,Domestic
+ABQ,Albuquerque,USA,Domestic
+ELP,El Paso,USA,Domestic
+TUS,Tucson,USA,Domestic
+BOI,Boise,USA,Domestic
+GEG,Spokane,USA,Domestic
+BIL,Billings,USA,Domestic
+COS,Colorado Springs,USA,Domestic
+ANC,Anchorage,USA,Domestic
+FAI,Fairbanks,USA,Domestic
+LIH,Lihue,USA,Domestic
+KOA,Kona,USA,Domestic
+MKK,Molokai,USA,Domestic
+YUL,Montreal,Canada,International
+YOW,Ottawa,Canada,Domestic
+YEG,Edmonton,Canada,Domestic
+YWG,Winnipeg,Canada,Domestic
+MTY,Monterrey,Mexico,International
+CUN,Cancun,Mexico,International
+PTY,Panama City,Panama,International
+SJO,San Jose,Costa Rica,International
+LIM,Lima,Peru,International
+BUE,Buenos Aires,Argentina,International
+EZE,Buenos Aires,Argentina,International
+UIO,Quito,Ecuador,International
+CCU,Kolkata,India,International
+HYD,Hyderabad,India,International
+MAA,Chennai,India,International
+BLR,Bangalore,India,International
+BKI,Kota Kinabalu,Malaysia,International
+PEN,Penang,Malaysia,International
+SGN,Ho Chi Minh City,Vietnam,International
+HAN,Hanoi,Vietnam,International
+MNL,Manila,Philippines,International
+CEB,Cebu,Philippines,International
+HKG,Hong Kong,Hong Kong,International
+TPE,Taipei,Taiwan,International
+KHH,Kaohsiung,Taiwan,International
+DPS,Denpasar,Indonesia,International
+CGK,Jakarta,Indonesia,International
+SUB,Surabaya,Indonesia,International
+ADL,Adelaide,Australia,International
+PER,Perth,Australia,International
+BNE,Brisbane,Australia,International
+CHC,Christchurch,New Zealand,International
+WLG,Wellington,New Zealand,International
+SUV,Suva,Fiji,International
+PPT,Papeete,French Polynesia,International
+NOU,Noumea,New Caledonia,International
+CDA,Canberra,Australia,Domestic
+HBA,Hobart,Australia,Domestic
+OOL,Gold Coast,Australia,Domestic
+DRW,Darwin,Australia,Domestic
+AKR,Akron,USA,Domestic
+AMA,Amarillo,USA,Domestic
+AVP,Scranton,USA,Domestic
+AZA,Mesa,USA,Domestic
+BLI,Bellingham,USA,Domestic
+BZN,Bozeman,USA,Domestic
+CID,Cedar Rapids,USA,Domestic
+DAY,Dayton,USA,Domestic
+DSM,Des Moines,USA,Domestic
+EUG,Eugene,USA,Domestic
+EVV,Evansville,USA,Domestic
+FWA,Fort Wayne,USA,Domestic
+GJT,Grand Junction,USA,Domestic
+GSO,Greensboro,USA,Domestic
+GTF,Great Falls,USA,Domestic
+HSV,Huntsville,USA,Domestic
+ICT,Wichita,USA,Domestic
+ILM,Wilmington,USA,Domestic
+JLN,Joplin,USA,Domestic
+LAN,Lansing,USA,Domestic
+LEX,Lexington,USA,Domestic
+LNK,Lincoln,USA,Domestic
+LOU,Louisville,USA,Domestic
+MBS,Saginaw,USA,Domestic
+MOB,Mobile,USA,Domestic
+MYR,Myrtle Beach,USA,Domestic
+OGS,Ogdensburg,USA,Domestic
+PNS,Pensacola,USA,Domestic
+RDD,Redding,USA,Domestic
+ROA,Roanoke,USA,Domestic
+SDF,Louisville,USA,Domestic
+SGF,Springfield,USA,Domestic
+SHV,Shreveport,USA,Domestic
+SRQ,Sarasota,USA,Domestic
+TLH,Tallahassee,USA,Domestic
+TOL,Toledo,USA,Domestic
+TUL,Tulsa,USA,Domestic
+TYR,Tyler,USA,Domestic
+VPS,Valparaiso,USA,Domestic
+WST,Westerly,USA,Domestic
+YAK,Yakutat,USA,Domestic
+YKM,Yakima,USA,Domestic
+YUM,Yuma,USA,Domestic
+ZZV,Zanesville,USA,Domestic
+ZUL,Zilner,USA,Domestic
+AER,Sochi,Russia,International
+AKX,Aqtobe,Kazakhstan,International
+AMM,Amman,Jordan,International
+ASA,Assab,Eritrea,International
+ASR,Kayseri,Turkey,International
+ATQ,Amritsar,India,International
+BAH,Manama,Bahrain,International
+BGW,Baghdad,Iraq,International
+BEY,Beirut,Lebanon,International
+CCJ,Calicut,India,International
+CMB,Colombo,Sri Lanka,International
+COK,Kochi,India,International
+CSX,Changsha,China,International
+DAC,Dhaka,Bangladesh,International
+DAM,Damascus,Syria,International
+DMM,Dammam,Saudi Arabia,International
+ESB,Ankara,Turkey,International
+EVN,Yerevan,Armenia,International
+GVA,Geneva,Switzerland,International
+KHI,Karachi,Pakistan,International
+KMG,Kunming,China,International
+KTM,Kathmandu,Nepal,International
+KWI,Kuwait City,Kuwait,International
+LCA,Larnaca,Cyprus,International
+MLE,Male,Maldives,International
+NBO,Nairobi,Kenya,International
+NGO,Nagoya,Japan,International
+OKA,Okinawa,Japan,Domestic
+PNH,Phnom Penh,Cambodia,International
+RGN,Yangon,Myanmar,International
+RUH,Riyadh,Saudi Arabia,International
+SJJ,Sarajevo,Bosnia,International
+TIV,Tivat,Montenegro,International
+TRV,Trivandrum,India,International
+ULN,Ulaanbaatar,Mongolia,International
+VCE,Venice,Italy,International
+VLN,Valencia,Venezuela,International
+XMN,Xiamen,China,International
+YIA,Yanji,China,Domestic
+ZAG,Zagreb,Croatia,International
+ZNZ,Zanzibar,Tanzania,International
+ADD,Addis Ababa,Ethiopia,International
+ALG,Algiers,Algeria,International
+CMN,Casablanca,Morocco,International
+CPT,Cape Town,South Africa,International
+DKR,Dakar,Senegal,International
+LOS,Lagos,Nigeria,International
+LAD,Luanda,Angola,International
+MRU,Port Louis,Mauritius,International
+NDJ,N'Djamena,Chad,International
+RAK,Marrakesh,Morocco,International
+RUN,Saint-Denis,Reunion,International
+SEZ,Mahe,Seychelles,International
+TUN,Tunis,Tunisia,International
+HRE,Harare,Zimbabwe,International
+ACC,Accra,Ghana,International
+ABJ,Abidjan,Cote d'Ivoire,International
+FIH,Kinshasa,DR Congo,International
+LUN,Lusaka,Zambia,International
+KRT,Khartoum,Sudan,International
+NSI,Yaounde,Cameroon,International
+BLZ,Blantyre,Malawi,International
+LLW,Lilongwe,Malawi,International
+ASM,Asmara,Eritrea,International
+BJM,Bujumbura,Burundi,International
+KGL,Kigali,Rwanda,International
+DAR,Dar es Salaam,Tanzania,International
+MBA,Mombasa,Kenya,International
+NCE,Nice,France,International
+BRU,Brussels,Belgium,International
+BHX,Birmingham,UK,International
+MAN,Manchester,UK,International
+GLA,Glasgow,UK,International
+EDI,Edinburgh,UK,International
+DUS,Dusseldorf,Germany,International
+HAM,Hamburg,Germany,International
+STR,Stuttgart,Germany,International
+NUE,Nuremberg,Germany,International
+HAJ,Hannover,Germany,International
+BSL,Basel,Switzerland,International
+MRS,Marseille,France,International
+LYS,Lyon,France,International
+TLS,Toulouse,France,International
+NTE,Nantes,France,International
+BOD,Bordeaux,France,International
+PSA,Pisa,Italy,International
+NAP,Naples,Italy,International
+CTA,Catania,Italy,International
+PMO,Palermo,Italy,International
+SVQ,Seville,Spain,International
+AGP,Malaga,Spain,International
+ALC,Alicante,Spain,International
+VLC,Valencia,Spain,International
+TFS,Tenerife,Spain,International
+LPA,Gran Canaria,Spain,International
+FNC,Funchal,Portugal,International
+OPO,Porto,Portugal,International
+LIS,Lisbon,Portugal,International
+MXP,Milan,Italy,International
+LIN,Milan,Italy,Domestic
+BER,Berlin,Germany,International
+SVO,Moscow,Russia,International
+DME,Moscow,Russia,International
+LED,Saint Petersburg,Russia,International
+KBP,Kyiv,Ukraine,International
+OTP,Bucharest,Romania,International
+SOF,Sofia,Bulgaria,International
+BEG,Belgrade,Serbia,International
+SKG,Thessaloniki,Greece,International
+ADB,Izmir,Turkey,International
+AYT,Antalya,Turkey,International
+SAW,Istanbul,Turkey,Domestic
+GYD,Baku,Azerbaijan,International
+TBS,Tbilisi,Georgia,International
+ALA,Almaty,Kazakhstan,International
+TAS,Tashkent,Uzbekistan,International
+FPO,Freeport,Bahamas,International
+NAS,Nassau,Bahamas,International
+AUA,Oranjestad,Aruba,International
+CUR,Willemstad,Curacao,International
+KIN,Kingston,Jamaica,International
+MBJ,Montego Bay,Jamaica,International
+SJU,San Juan,Puerto Rico,International
+POP,Puerto Plata,Dominican Republic,International
+PUJ,Punta Cana,Dominican Republic,International
+HAV,Havana,Cuba,International
+GCM,Grand Cayman,Cayman Islands,International
+PTP,Pointe-a-Pitre,Guadeloupe,International
+FDF,Fort-de-France,Martinique,International
+SKB,Basseterre,Saint Kitts and Nevis,International
+ANU,St. John's,Antigua and Barbuda,International
+SLU,Castries,Saint Lucia,International
+BGI,Bridgetown,Barbados,International
+POS,Port of Spain,Trinidad and Tobago,International
+GEO,Georgetown,Guyana,International
+PBM,Paramaribo,Suriname,International
+VCP,Campinas,Brazil,Domestic
+CNF,Belo Horizonte,Brazil,International
+SSA,Salvador,Brazil,Domestic
+REC,Recife,Brazil,Domestic
+FOR,Fortaleza,Brazil,Domestic
+BSB,Brasilia,Brazil,Domestic
+COR,Cordoba,Argentina,Domestic
+ROS,Rosario,Argentina,Domestic
+MVD,Montevideo,Uruguay,International
